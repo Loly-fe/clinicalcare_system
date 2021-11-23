@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    form {        
+        flex-wrap: wrap;
+    }
+    .pform {
+        display: grid;
+        justify-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 600px;
+        padding: 5px;
+        background-color: rgb(136, 178, 179);
+    }
+    .logoutbtn {
+        width: 100px;
+        height: 25px;
+        margin-top: 30px;
+        justify-self: end;
+        text-decoration: none;
+    }
+    .insideform {
+        display: grid;
+        grid-template-columns: 300px 300px 300px;
+        background-color: beige;
+        gap: 5px;
+        padding: 5px;
+        border: 1px solid bisque;
+    }
+    .address {
+        grid-column: 1/4;
+    }
+    .mhcheckbox {
+        display: grid;
+    }
+    .required:after {
+        content:" *";
+        color: red;
+    }
+</style>
+<body>
+    <form name="patientlogform" method="get" action="" onsubmit="return validateForm()">
+        <div class="pform">
+            <div class="insideform">
+                <div>
+                    <p><br>Welcome</p>
+                </div>
+                <div>
+                    <H1>Patient Form</H1>
+                </div>
+                <button class="logoutbtn"><a href="index.html">Log-out</a></button>
+            </div>
+            <div class="insideform"> 
+                <div>
+                    <input id="fname" name="fname" type="text"><br>
+                    <label class="required" for="fname">First Name</label>
+                </div>
+                <div>
+                    <input id="mname" name="mname" type="text"><br>
+                    <label for="mname">Middle Name</label>
+                </div>
+                <div>
+                    <input id="lname" name="lname" type="text"><br>
+                    <label class="required" for="lname">Last Name</label>
+                </div>
+            </div>
+            <div class="insideform">
+                <div>
+                    <label name="fname" for="Gender:" required>Gender:</label>
+                    <input name="gender" type="radio">
+                    <label for="male">Male</label>
+                    <input name="gender" type="radio">
+                    <label for="female">Female</label>
+                </div>
+                <div>
+                    <label for="status">Status:</label>
+                    <input name="status" type="radio">
+                    <label for="single">Single</label>
+                    <input name="status" type="radio">
+                    <label for="single">Married</label>
+                </div>
+            </div>
+            <div class="insideform">
+                <div class="address">
+                    <label for="address">Address:</label>
+                    <input id="address" style="width: 90%; height: 20px" type="textarea">
+                </div>
+                <div>
+                    <label for="bday">Birthday</label>
+                    <input id="bday" type="date" name="bday" id="bday" min="1990-01-01" max="2021-17-17">
+                </div>
+                <div>
+                    <label class="required" for="contact">Contact Number</label>
+                    <input id="contact" type="number" name="number" id="number" pattern="[0-9]" maxlength="11" placeholder="ex. 09123456789">
+                </div>
+            </div>
+            <div class="insideform">
+                <label class="required" for="mhcheckbox">Medical History:</label>
+                <div class="mhcheckbox">
+                    <div>
+                        <input value="Asthma" name="medhistory" type="checkbox">
+                        <label for="">Asthma</label>
+                    </div>
+                    <div>
+                        <input value="Cancer" name="medhistory" type="checkbox">
+                        <label for="">Cancer</label>
+                    </div>
+                    <div>
+                        <input value="Cardiac Disease" name="medhistory" type="checkbox">
+                        <label for="">Cardiac Disease</label>
+                    </div>
+                    <div>
+                        <input value="Diabetes" name="medhistory" type="checkbox">
+                        <label for="">Diabetes</label>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <input value="Hypertension" name="medhistory" type="checkbox">
+                        <label for="">Hypertension</label>
+                    </div>
+                    <div>
+                        <input value="Psychiatrc Disorder" name="medhistory" type="checkbox">
+                        <label for="">Psychiatrc Disorder</label>
+                    </div>
+                    <div>
+                        <input value="Epilepsy" name="medhistory" type="checkbox">
+                        <label for="">Epilepsy</label>
+                    </div>
+                    <div>
+                        <input name="others" id="others" value="others" type="checkbox" onclick="enabletext()">
+                        <label for="">Others</label>
+                    </div>
+                    <input name="medhistory" id="textothers" type="text" disabled>
+                </div>
+            </div>
+            <div class="insideform">
+                <div>
+                    <label for="csselect">Current Symtoms:</label>
+                    <select name="csselect" id="csselect">
+                        <option name="symptoms" value="Selection">Selection</option>
+                        <option name="symptoms" value="Chest Pain">Chest Pain</option>
+                        <option name="symptoms" value="Respiratory">Respiratory</option>
+                        <option name="symptoms" value="Hermatological">Hermatological</option>
+                        <option name="symptoms" value="">Hermatological</option>
+                        <option name="symptoms" value="Lymphatic">Lymphatic</option>
+                        <option name="symptoms" value="Neurologica">Neurologica</option>
+                        <option name="symptoms" value="Psychiatric">Psychiatric</option>
+                        <option name="symptoms" value="Gastrointestinal">Gastrointestinal</option>
+                        <option name="symptoms" value="Weight Loss">Weight Loss</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="required" for="Medication">Are you currently taking medication?</label><br>
+                    <input type="radio" id="yes" onclick="enable()" name="hasmedic" value="yes"><label for="yes">Yes</label><br>
+                    <input type="radio" id="no" onclick="enable()" name="hasmedic" value="no"><label for="no">No</label><br>
+                    <input type="text" id="medtext" disabled>
+                </div>
+            </div>
+            <div style="margin-top: 5px;">
+                <button type="reset">Reset</button>
+                <button id="submitbtn" type="submit" >Submit</button>
+            </div>
+        </div>
+    </form>
+    <br><br>
+    <button id="tablebtn">List of patients</button>
+    <table id="patientlisttable" border="1">
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Status</th>
+        <th>Address</th>
+        <th>Birthday</th>
+        <th>contact</th>
+        <th>Medical History</th>
+        <th>Current Symptoms</th>
+        <th>Any medication?</th>
+        <th>(if yes) medication</th>
+    </table>
+
+    <div id="display">
+        <pre></pre>
+    </div>
+
+    <script>
+
+        function enabletext() {
+            if (document.getElementById("others").checked==true) {
+                document.getElementById("textothers").disabled = false;
+            }
+            if (document.getElementById("others").checked==false) {
+                document.getElementById("textothers").disabled = true;
+            }
+        }
+        
+        function enable() {
+            if (document.getElementById("no").checked==true) {
+                document.getElementById("yes").checked==false;
+                document.getElementById("medtext").disabled = true;
+            }
+            if (document.getElementById("yes").checked==true) {
+                document.getElementById("no").checked=false;
+                document.getElementById("medtext").disabled = false;
+            }
+        }
+
+        function validateForm() {
+            let logForm =  document.forms["logform"];
+            let fName = logForm["fname"].value.trim();
+            let mName = logForm["mname"].value.trim();
+            let lName = logForm["lname"].value.trim();
+            let number = logForm["number"].value.trim();
+            if (!fName) {
+                alert('Please provide First Name');
+                logForm['fname'].focus();
+                return false;
+            }
+            if (!mName) {
+                alert('Please provide Middle Name');
+                logForm['mname'].focus();
+                return false;
+            }
+            if (!lName) {
+                alert('Please provide Last Name');
+                logForm['lname'].focus();
+                return false;
+            }
+        }
+
+        let patientlog = [];
+
+        addPatientInfo = (e) => {
+            e.preventDefault();
+
+            let patient = {
+                fname: document.getElementById("fname").value,
+                mname: document.getElementById("mname").value,
+                lname: document.getElementById("lname").value,
+                gender: document.getElementsByName("gender").checked,
+                status: document.getElementsByName("status").checked,
+                address: document.getElementById("address").value,
+                bday: document.getElementById("bday").value,   
+                contact: document.getElementById("contact").value,   
+                medhistory: document.getElementsByName("input[name='medhistory']:checked"),  
+                symptoms: document.getElementsByName("symptoms").checked,  
+                hasmedic: document.getElementsByName("hasmedic").checked, 
+                medtext: document.getElementById("medtext").value,   
+            }
+            patientlog.push(patient);
+
+            if (patientlog.push(patient) != null) {
+
+                localStorage.setItem("patient", JSON.stringify(patientlog))                
+                console.table(patientlog);
+            }
+        //conditional before saving    
+            document.patientlogform.reset(); 
+
+        }
+ 
+        listPatient = (e) => {
+            e.preventDefault();
+
+            let newArray = [];
+            newArray = JSON.parse(localStorage.getItem("patient"));
+
+            console.table(newArray);
+
+            let patientlisttable = document.getElementById("patientlisttable");
+
+            newArray.forEach((patient, i) => {
+                console.log(patient);
+
+                let listRows = patientlisttable.insertRow(i+1);
+                let j = 0;
+                for(let property in patient) {
+                    let listCols = listRows.insertCell(j);
+                    listCols.innerHTML = patient[property];
+                    j++;
+                }
+                
+            })            
+        }
+
+        document.getElementById("tablebtn").addEventListener("click", listPatient);
+
+    </script>
+</body>
+</html>
